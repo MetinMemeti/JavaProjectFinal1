@@ -20,10 +20,11 @@ repositories {
 dependencies {
 	//implementation 'org.springframework.boot:spring-boot-starter-data-jpa' per prova a de funksionoje
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	runtimeOnly 'com.mysql:mysql-connector-j'
+	//runtimeOnly 'com.mysql:mysql-connector-j'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
+// prova branch metin
 
 tasks.named('test') {
 	useJUnitPlatform()

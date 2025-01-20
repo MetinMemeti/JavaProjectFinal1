@@ -8,6 +8,9 @@ public class Libraryprojectjava1Application {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Libraryprojectjava1Application.class, args);
+
+		System.out.println("Hello World!");
+
 	}
 
 }
