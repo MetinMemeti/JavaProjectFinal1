@@ -18,14 +18,24 @@ public class Transaction {
     @JoinColumn(name = "member_id", nullable = false)
     private Member member;
 
+    @Column(name="borrowDate")
     private LocalDate borrowDate;
+
+    @Column(name="returnDate")
     private LocalDate returnDate;
-    private String status;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status", nullable = false)
+    private Status status;
+
+    public enum Status {
+        BORROWED, RETURNED
+    }
 
 
     public Transaction() {}
 
-    public Transaction(Book book, Member member, LocalDate borrowDate, LocalDate returnDate, String status) {
+    public Transaction(Book book, Member member, LocalDate borrowDate, LocalDate returnDate, Status status) {
         this.book = book;
         this.member = member;
         this.borrowDate = borrowDate;
@@ -73,11 +83,11 @@ public class Transaction {
         this.returnDate = returnDate;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 

@@ -6,13 +6,22 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
+@Table(name = "member")
 public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name="email")
     private String email;
+
+    @Column(name="phone")
     private String phone;
+
+    @Column(name="membershipDate")
     private LocalDate membershipDate;
 
 
