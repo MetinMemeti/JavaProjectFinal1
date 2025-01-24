@@ -1,4 +1,5 @@
-package com.example.libraryprojectjava1.pojo;
+package com.example.libraryprojectjava1.pojo.entity;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.Objects;
@@ -8,14 +9,16 @@ import java.util.Objects;
 public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @ManyToOne
     @JoinColumn(name = "book_id", nullable = false)
     private Book book;
 
+    //many transactions are made by one member, one transaction has one member only
     @ManyToOne
     @JoinColumn(name = "member_id", nullable = false)
+    @JsonBackReference
     private Member member;
 
     @Column(name="borrowDate")
@@ -35,19 +38,20 @@ public class Transaction {
 
     public Transaction() {}
 
-    public Transaction(Book book, Member member, LocalDate borrowDate, LocalDate returnDate, Status status) {
+    public Transaction(Integer id,Book book, Member member, LocalDate borrowDate, LocalDate returnDate, Status status) {
         this.book = book;
         this.member = member;
         this.borrowDate = borrowDate;
         this.returnDate = returnDate;
         this.status = status;
+        this.id=id;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

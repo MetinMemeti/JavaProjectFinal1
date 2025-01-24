@@ -1,45 +1,46 @@
-package com.example.libraryprojectjava1.pojo;
+package com.example.libraryprojectjava1.pojo.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.util.Objects;
 
 @Entity
-@Table(name="book")
+@Table(name = "book")
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
-    @Column(name = "title")
+    @Column(name = "title", nullable = false)
     private String title;
 
-    @Column(name = "author")
+    @Column(name = "author", nullable = false)
     private String author;
 
-    @Column(name = "category")
-    private String category;
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    @JsonBackReference
+    private Category category;
 
     @Column(name = "availability")
     private int availability;
 
-
-
     public Book() {}
 
-    public Book(String title, String author, String category, int availability) {
+    public Book(Integer id,String title, String author, Category category, int availability) {
         this.title = title;
         this.author = author;
         this.category = category;
-
         this.availability = availability;
+        this.id = id;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -59,16 +60,13 @@ public class Book {
         this.author = author;
     }
 
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
-
-
-
 
     public int getAvailability() {
         return availability;
@@ -90,6 +88,4 @@ public class Book {
     public int hashCode() {
         return Objects.hash(id);
     }
-
-
 }

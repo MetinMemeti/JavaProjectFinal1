@@ -1,7 +1,8 @@
 package com.example.libraryprojectjava1.controller;
 
-import com.example.libraryprojectjava1.pojo.Book;
-import com.example.libraryprojectjava1.service.BookService;
+import com.example.libraryprojectjava1.pojo.entity.Book;
+import com.example.libraryprojectjava1.pojo.entity.Category;
+import com.example.libraryprojectjava1.service.DefaultBookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +14,7 @@ import java.util.List;
 public class BookController {
 
     @Autowired
-    private BookService bookService;
+    private DefaultBookService bookService;
 
     // Add a new book
     @PostMapping
@@ -29,7 +30,7 @@ public class BookController {
 
     // Get a book by ID
     @GetMapping("/{id}")
-    public ResponseEntity<Book> getBookById(@PathVariable Long id) {
+    public ResponseEntity<Book> getBookById(@PathVariable Integer id) {
         Book book = bookService.getBookById(id);
         if (book != null) {
             return ResponseEntity.ok(book);
@@ -39,7 +40,7 @@ public class BookController {
 
     // Update a book
     @PutMapping("/{id}")
-    public ResponseEntity<Book> updateBook(@PathVariable Long id, @RequestBody Book bookDetails) {
+    public ResponseEntity<Book> updateBook(@PathVariable Integer id, @RequestBody Book bookDetails) {
         Book updatedBook = bookService.updateBook(id, bookDetails);
         if (updatedBook != null) {
             return ResponseEntity.ok(updatedBook);
@@ -49,7 +50,7 @@ public class BookController {
 
     // Delete a book
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteBook(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteBook(@PathVariable Integer id) {
         if (bookService.deleteBook(id)) {
             return ResponseEntity.noContent().build();
         }
@@ -60,7 +61,7 @@ public class BookController {
     @GetMapping("/search")
     public ResponseEntity<List<Book>> searchBooks(@RequestParam(required = false) String title,
                                                   @RequestParam(required = false) String author,
-                                                  @RequestParam(required = false) String category) {
+                                                  @RequestParam(required = false) Category category) {
         return ResponseEntity.ok(bookService.searchBooks(title, author, category));
     }
 }

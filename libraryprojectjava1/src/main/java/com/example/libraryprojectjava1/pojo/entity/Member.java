@@ -1,16 +1,17 @@
-package com.example.libraryprojectjava1.pojo;
+package com.example.libraryprojectjava1.pojo.entity;
 
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "member")
 public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Column(name = "name")
     private String name;
@@ -24,21 +25,25 @@ public class Member {
     @Column(name="membershipDate")
     private LocalDate membershipDate;
 
+    @OneToMany(mappedBy = "member")
+    private Set<Transaction> transactions;
+
 
     public Member() {}
 
-    public Member(String name, String email, String phone, LocalDate membershipDate) {
+    public Member(Integer id, String name, String email, String phone, LocalDate membershipDate) {
+        this.id = id;
         this.name = name;
         this.email = email;
         this.phone = phone;
         this.membershipDate = membershipDate;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

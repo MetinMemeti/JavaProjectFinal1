@@ -1,14 +1,17 @@
 package com.example.libraryprojectjava1.repository;
 
-import com.example.libraryprojectjava1.pojo.Book;
+import com.example.libraryprojectjava1.pojo.entity.Book;
+import com.example.libraryprojectjava1.pojo.entity.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface BookRepository extends JpaRepository<Book, Long> {
+public interface BookRepository extends JpaRepository<Book, Integer> {
     List<Book> findByTitleContaining(String title);
     List<Book> findByAuthorContaining(String author);
-    List<Book> findByCategory(String category);
+    List<Book> findByCategory(Category category);
+    //add by id
+    //remove by id
 }
