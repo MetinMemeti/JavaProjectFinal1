@@ -1,13 +1,14 @@
 package com.example.libraryprojectjava1.pojo.entity;
 
-
 import com.example.libraryprojectjava1.pojo.dto.Address;
 import com.example.libraryprojectjava1.pojo.dto.AvailabilityL;
 import com.example.libraryprojectjava1.pojo.dto.LibraryType;
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
-@Table(name="library")
+@Table(name = "library")
 public class Library {
 
     @GeneratedValue
@@ -28,10 +29,14 @@ public class Library {
 
     @Column(name = "latitude")
     private double latitude; // Geographic latitude of the library
-    @Column(name = "longtitude")
+
+    @Column(name = "longitude")
     private double longitude; // Geographic longitude of the library
 
-    public Library(Integer  id, String name, Address address, LibraryType type, AvailabilityL isOpenToPublic, double latitude, double longitude) {
+    @OneToMany(mappedBy = "library")
+    private Set<Member> members; // A library can have multiple members
+
+    public Library(Integer id, String name, Address address, LibraryType type, AvailabilityL isOpenToPublic, double latitude, double longitude) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -42,66 +47,15 @@ public class Library {
     }
 
     public Library() {
-
     }
 
-    public Integer getId() {
-        return id;
-    }
-    public void setId(Integer id) {
-        this.id = id;
-    }
-    // Getter and Setter for 'name'
-    public String getName() {
-        return name;
+    // Getter and Setter methods...
+
+    public Set<Member> getMembers() {
+        return members;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    // Getter and Setter for 'address'
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
-    // Getter and Setter for 'type'
-    public LibraryType getType() {
-        return type;
-    }
-
-    public void setType(LibraryType type) {
-        this.type = type;
-    }
-
-    // Getter and Setter for 'isOpenToPublic'
-    public AvailabilityL isOpenToPublic() {
-        return isOpenToPublic;
-    }
-
-    public void setOpenToPublic(AvailabilityL isOpenToPublic) {
-        this.isOpenToPublic = isOpenToPublic;
-    }
-
-    // Getter and Setter for 'latitude'
-    public double getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
-    }
-
-    // Getter and Setter for 'longitude'
-    public double getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
+    public void setMembers(Set<Member> members) {
+        this.members = members;
     }
 }

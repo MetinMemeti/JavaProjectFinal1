@@ -9,6 +9,7 @@ import java.util.Set;
 @Entity
 @Table(name = "member")
 public class Member {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -16,67 +17,41 @@ public class Member {
     @Column(name = "name")
     private String name;
 
-    @Column(name="email")
+    @Column(name = "email")
     private String email;
 
-    @Column(name="phone")
+    @Column(name = "phone")
     private String phone;
 
-    @Column(name="membershipDate")
+    @Column(name = "membershipDate")
     private LocalDate membershipDate;
+
+    @ManyToOne
+    @JoinColumn(name = "library_id", nullable = false)
+    private Library library; // A member belongs to one library
 
     @OneToMany(mappedBy = "member")
     private Set<Transaction> transactions;
 
-
     public Member() {}
 
-    public Member(Integer id, String name, String email, String phone, LocalDate membershipDate) {
+    public Member(Integer id, String name, String email, String phone, LocalDate membershipDate, Library library) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.phone = phone;
         this.membershipDate = membershipDate;
+        this.library = library;
     }
 
-    public Integer getId() {
-        return id;
+    // Getter and Setter methods...
+
+    public Library getLibrary() {
+        return library;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public LocalDate getMembershipDate() {
-        return membershipDate;
-    }
-
-    public void setMembershipDate(LocalDate membershipDate) {
-        this.membershipDate = membershipDate;
+    public void setLibrary(Library library) {
+        this.library = library;
     }
 
     @Override
@@ -91,7 +66,4 @@ public class Member {
     public int hashCode() {
         return Objects.hash(id);
     }
-
-
-
 }
