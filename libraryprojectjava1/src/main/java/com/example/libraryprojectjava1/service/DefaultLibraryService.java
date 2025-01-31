@@ -18,8 +18,8 @@ public class DefaultLibraryService implements LibraryService {
     LibraryRepository libraryRepository;
 
     @Override
-    public Library create(Library restaurant) {
-        return libraryRepository.save(restaurant);
+    public Library create(Library library) {
+        return libraryRepository.save(library);
     }
 
     @Override

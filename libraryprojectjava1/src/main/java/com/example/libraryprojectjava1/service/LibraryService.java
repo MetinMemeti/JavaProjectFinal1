@@ -9,11 +9,11 @@ import java.util.Optional;
 
 public interface LibraryService {
 
-    Library create(Library restaurant);
+    Library create(Library library);
     Optional<Library> findById(Integer id);
     List<Library> findAll();
     List<Library> findByAddress(Address address);
-    List<Library> findByType(LibraryType restaurantType);
+    List<Library> findByType(LibraryType libraryType);
     List<Library> findByName(String name);
 
     void deleteLibrary(Integer id);

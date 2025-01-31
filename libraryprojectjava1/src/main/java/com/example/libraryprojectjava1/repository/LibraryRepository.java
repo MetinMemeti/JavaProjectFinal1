@@ -14,8 +14,8 @@ public interface LibraryRepository extends JpaRepository<Library, Integer> {
     @Query("SELECT l from Library l where l.address = :address")
     List<Library> findByAddress(@Param("address") Address address);
 
-    @Query("SELECT l from Library l where l.type = :restaurantType")
-    List<Library> findByType(@Param("restaurantType") LibraryType restaurantType);
+    @Query("SELECT l from Library l where l.type = :libraryType")
+    List<Library> findByType(@Param("libraryType") LibraryType libraryType);
 
     @Query("SELECT l FROM Library l WHERE l.name LIKE %:name%")
     List<Library> findByName(@Param("name") String name);
