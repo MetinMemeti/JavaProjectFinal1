@@ -3,6 +3,8 @@ package com.example.libraryprojectjava1.pojo.entity;
 import com.example.libraryprojectjava1.pojo.dto.Address;
 import com.example.libraryprojectjava1.pojo.dto.AvailabilityL;
 import com.example.libraryprojectjava1.pojo.dto.LibraryType;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.Set;
@@ -34,7 +36,9 @@ public class Library {
     private double longitude; // Geographic longitude of the library
 
     @OneToMany(mappedBy = "library", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private Set<Member> members; // A library can have multiple members
+
 
     public Library(Integer id, String name, Address address, LibraryType type, AvailabilityL isOpenToPublic, double latitude, double longitude) {
         this.id = id;

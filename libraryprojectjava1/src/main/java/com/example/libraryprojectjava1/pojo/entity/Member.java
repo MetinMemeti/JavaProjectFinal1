@@ -1,5 +1,6 @@
 package com.example.libraryprojectjava1.pojo.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -27,7 +28,8 @@ public class Member {
     private LocalDate membershipDate;
 
     @ManyToOne
-    @JoinColumn(name = "library_id", nullable = false)
+    @JoinColumn(name = "library_id", nullable = true)  // Now not nullable, to allow assignment later
+    @JsonBackReference
     private Library library; // A member belongs to one library
 
     @OneToMany(mappedBy = "member")
@@ -44,7 +46,55 @@ public class Member {
         this.library = library;
     }
 
+    // Utility method to assign a member to a library
+    public void assignToLibrary(Library library) {
+        if (library == null) {
+            throw new IllegalArgumentException("Library cannot be null");
+        }
+        this.library = library;
+    }
+
     // Getter and Setter methods...
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public LocalDate getMembershipDate() {
+        return membershipDate;
+    }
+
+    public void setMembershipDate(LocalDate membershipDate) {
+        this.membershipDate = membershipDate;
+    }
 
     public Library getLibrary() {
         return library;
