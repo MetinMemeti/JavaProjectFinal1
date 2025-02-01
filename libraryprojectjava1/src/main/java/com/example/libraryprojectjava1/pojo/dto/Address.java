@@ -2,8 +2,8 @@ package com.example.libraryprojectjava1.pojo.dto;
 
 public enum Address {
 
-    STRUGA,
-    TETOVO,
+    TETOVO, //1.
+    STRUGA, //2.
     SKOPJE,
     OHRID
 }
