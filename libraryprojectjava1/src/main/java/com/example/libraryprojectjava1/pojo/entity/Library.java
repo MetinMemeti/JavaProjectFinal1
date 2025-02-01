@@ -11,8 +11,8 @@ import java.util.Set;
 @Table(name = "library")
 public class Library {
 
-    @GeneratedValue
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "name", nullable = false, unique = true)
@@ -33,7 +33,7 @@ public class Library {
     @Column(name = "longitude")
     private double longitude; // Geographic longitude of the library
 
-    @OneToMany(mappedBy = "library")
+    @OneToMany(mappedBy = "library", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Member> members; // A library can have multiple members
 
     public Library(Integer id, String name, Address address, LibraryType type, AvailabilityL isOpenToPublic, double latitude, double longitude) {
@@ -49,7 +49,61 @@ public class Library {
     public Library() {
     }
 
-    // Getter and Setter methods...
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public LibraryType getType() {
+        return type;
+    }
+
+    public void setType(LibraryType type) {
+        this.type = type;
+    }
+
+    public AvailabilityL isOpenToPublic() {
+        return isOpenToPublic;
+    }
+
+    public void setOpenToPublic(AvailabilityL isOpenToPublic) {
+        this.isOpenToPublic = isOpenToPublic;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
 
     public Set<Member> getMembers() {
         return members;

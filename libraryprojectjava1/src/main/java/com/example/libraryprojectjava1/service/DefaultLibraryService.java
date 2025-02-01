@@ -3,11 +3,12 @@ package com.example.libraryprojectjava1.service;
 import com.example.libraryprojectjava1.pojo.dto.Address;
 import com.example.libraryprojectjava1.pojo.dto.LibraryType;
 import com.example.libraryprojectjava1.pojo.entity.Library;
+import com.example.libraryprojectjava1.pojo.entity.Member;
 import com.example.libraryprojectjava1.repository.LibraryRepository;
+import com.example.libraryprojectjava1.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,7 +16,10 @@ import java.util.Optional;
 public class DefaultLibraryService implements LibraryService {
 
     @Autowired
-    LibraryRepository libraryRepository;
+    private LibraryRepository libraryRepository;
+
+    @Autowired
+    private MemberRepository memberRepository;
 
     @Override
     public Library create(Library library) {
@@ -24,15 +28,12 @@ public class DefaultLibraryService implements LibraryService {
 
     @Override
     public Optional<Library> findById(Integer id) {
-
         return libraryRepository.findById(id);
     }
 
     @Override
     public List<Library> findAll() {
-        List<Library> libraries=new ArrayList<>();
-        libraryRepository.findAll().forEach(libraries::add);
-        return libraries;
+        return libraryRepository.findAll();
     }
 
     @Override
@@ -51,9 +52,13 @@ public class DefaultLibraryService implements LibraryService {
     }
 
     @Override
-    public void deleteLibrary(Integer id) {
+    public List<Member> getMembers(Integer libraryId) {
+        return memberRepository.findByLibraryId(libraryId);  // Fetch members by library ID
+    }
 
-         libraryRepository.deleteById(id);
+    @Override
+    public void deleteLibrary(Integer id) {
+        libraryRepository.deleteById(id);
     }
 
     @Override
@@ -63,6 +68,6 @@ public class DefaultLibraryService implements LibraryService {
 
     @Override
     public List<Library> findByAddressAndName(Address address, String name) {
-        return libraryRepository.findByAddressAndName(address,name);
+        return libraryRepository.findByAddressAndName(address, name);
     }
 }

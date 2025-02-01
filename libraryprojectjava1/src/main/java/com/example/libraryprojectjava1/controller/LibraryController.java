@@ -3,7 +3,9 @@ package com.example.libraryprojectjava1.controller;
 import com.example.libraryprojectjava1.pojo.dto.Address;
 import com.example.libraryprojectjava1.pojo.dto.LibraryType;
 import com.example.libraryprojectjava1.pojo.entity.Library;
+import com.example.libraryprojectjava1.pojo.entity.Member;
 import com.example.libraryprojectjava1.service.LibraryService;
+import com.example.libraryprojectjava1.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +19,9 @@ public class LibraryController {
 
     @Autowired
     private LibraryService libraryService;
+
+    @Autowired
+    private MemberService memberService;
 
     // Create a new library
     @PostMapping
@@ -88,5 +93,21 @@ public class LibraryController {
     public ResponseEntity<List<Library>> findLibrariesByAddressAndName(@RequestParam Address address, @RequestParam String name) {
         List<Library> libraries = libraryService.findByAddressAndName(address, name);
         return ResponseEntity.ok(libraries);
+    }
+
+    // New: Get members of a specific library
+    @GetMapping("/{libraryId}/members")
+    public ResponseEntity<List<Member>> getMembers(@PathVariable Integer libraryId) {
+        List<Member> members = libraryService.getMembers(libraryId);
+        return ResponseEntity.ok(members);
+    }
+
+    // New: Add a member to a library
+    @PostMapping("/{libraryId}/members")
+    public ResponseEntity<Member> addMemberToLibrary(@PathVariable Integer libraryId, @RequestBody Member member) {
+        Library library = libraryService.findById(libraryId).orElseThrow(() -> new RuntimeException("Library not found"));
+        member.setLibrary(library);
+        Member savedMember = memberService.create(member);
+        return ResponseEntity.ok(savedMember);
     }
 }
