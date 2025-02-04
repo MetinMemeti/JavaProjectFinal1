@@ -27,6 +27,7 @@ public class Library {
     private LibraryType type; // Type of library (e.g., public, private, academic)
 
     @Column(name = "availability")
+    @Enumerated(EnumType.ORDINAL)
     private AvailabilityL isOpenToPublic; // Whether the library is open to the public
 
     @Column(name = "latitude")
