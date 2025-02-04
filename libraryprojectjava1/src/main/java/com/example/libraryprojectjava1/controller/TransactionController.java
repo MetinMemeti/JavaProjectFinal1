@@ -48,11 +48,15 @@ public class TransactionController {
         return transaction.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    // Update a transaction (e.g., changing the status)
+    // Update a transaction (e.g., changing the status or dates)
     @PutMapping("/{id}")
     public ResponseEntity<Transaction> updateTransaction(@PathVariable Integer id, @RequestBody Transaction transaction) {
-        transaction.setId(id);  // Set the ID of the transaction to be updated
-        Transaction updatedTransaction = transactionService.saveTransaction(transaction); // Assuming save for update
-        return ResponseEntity.ok(updatedTransaction);
+        try {
+            transaction.setId(id);  // Ensure the correct ID is set
+            Transaction updatedTransaction = transactionService.updateTransaction(transaction);
+            return ResponseEntity.ok(updatedTransaction);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(null);
+        }
     }
 }

@@ -29,18 +29,45 @@ public class DefaultTransactionService implements TransactionService {
         // Check if the book is already borrowed by another member
         List<Transaction> existingTransactions = transactionRepository.findByBookId(transaction.getBook().getId());
         for (Transaction existingTransaction : existingTransactions) {
-            // Check if the transaction is still in the "BORROWED" status
             if (existingTransaction.getStatus() == Transaction.Status.BORROWED) {
                 throw new IllegalArgumentException("The book is already borrowed by another member.");
             }
         }
 
-        // If no such transaction exists, proceed to save the new transaction
+        // Save the new transaction
         return transactionRepository.save(transaction);
     }
 
     @Override
     public Optional<Transaction> getTransactionById(Integer id) {
         return transactionRepository.findById(id);
+    }
+
+    @Override
+    public Transaction updateTransaction(Transaction transaction) {
+        if (transaction.getId() == null) {
+            throw new IllegalArgumentException("Transaction ID is required for updating.");
+        }
+
+        Optional<Transaction> existingTransactionOpt = transactionRepository.findById(transaction.getId());
+        if (existingTransactionOpt.isEmpty()) {
+            throw new IllegalArgumentException("Transaction not found.");
+        }
+
+        Transaction existingTransaction = existingTransactionOpt.get();
+
+        // Validate that the book reference is not null
+        if (transaction.getBook() == null) {
+            throw new IllegalArgumentException("Book cannot be null when updating a transaction.");
+        }
+
+        // Update fields
+        existingTransaction.setBook(transaction.getBook());
+        existingTransaction.setMember(transaction.getMember());
+        existingTransaction.setBorrowDate(transaction.getBorrowDate());
+        existingTransaction.setReturnDate(transaction.getReturnDate());
+        existingTransaction.setStatus(transaction.getStatus());
+
+        return transactionRepository.save(existingTransaction);
     }
 }

@@ -13,4 +13,5 @@ public interface TransactionService {
     Transaction saveTransaction(Transaction transaction);
 
     Optional<Transaction> getTransactionById(Integer id);
+    Transaction updateTransaction(Transaction transaction);
 }
