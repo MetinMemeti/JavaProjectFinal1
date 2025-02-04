@@ -27,7 +27,6 @@ public class Library {
     private LibraryType type; // Type of library (e.g., public, private, academic)
 
     @Column(name = "availability")
-    @Enumerated(EnumType.ORDINAL)
     private AvailabilityL isOpenToPublic; // Whether the library is open to the public
 
     @Column(name = "latitude")
@@ -86,11 +85,11 @@ public class Library {
         this.type = type;
     }
 
-    public AvailabilityL isOpenToPublic() {
+    public AvailabilityL getisOpenToPublic() {
         return isOpenToPublic;
     }
 
-    public void setOpenToPublic(AvailabilityL isOpenToPublic) {
+    public void setIsOpenToPublic(AvailabilityL isOpenToPublic) {
         this.isOpenToPublic = isOpenToPublic;
     }
 
