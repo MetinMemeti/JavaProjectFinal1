@@ -1,6 +1,8 @@
 package com.example.libraryprojectjava1.pojo.entity;
 
 import jakarta.persistence.*;
+
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -27,6 +29,7 @@ public class Category {
         this.name = name;
         this.description = description;
         this.id = id;
+        this.books = new HashSet<Book>();
     }
 
     public Integer getId() {

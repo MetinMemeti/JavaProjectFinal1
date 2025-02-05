@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "book")
@@ -25,6 +26,15 @@ public class Book {
 
     @Column(name = "availability")
     private int availability;
+
+    @ManyToOne
+    @JoinColumn(name = "library_id", nullable = false)
+    @JsonBackReference
+    private Library library;
+
+    @OneToMany(mappedBy = "book")
+    private Set<Transaction> transactions;
+
 
     public Book() {}
 

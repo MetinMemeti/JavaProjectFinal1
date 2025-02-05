@@ -1,7 +1,7 @@
 package com.example.libraryprojectjava1.service;
 
-import com.example.libraryprojectjava1.pojo.dto.Address;
-import com.example.libraryprojectjava1.pojo.dto.LibraryType;
+import com.example.libraryprojectjava1.pojo.Address;
+import com.example.libraryprojectjava1.pojo.LibraryType;
 import com.example.libraryprojectjava1.pojo.entity.Library;
 import com.example.libraryprojectjava1.pojo.entity.Member;
 
@@ -23,4 +23,7 @@ public interface LibraryService {
     Library update(Library libraryToUpdate);
 
     List<Library> findByAddressAndName(Address address, String name);
+
+    public Library incrementLoanCount(Integer id);
+    public Library addRating(Integer id, int rating);
 }

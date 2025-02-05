@@ -21,6 +21,7 @@ public class Transaction {
     @JsonBackReference
     private Member member;
 
+
     @Column(name="borrowDate")
     private LocalDate borrowDate;
 

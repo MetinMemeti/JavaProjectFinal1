@@ -1,7 +1,7 @@
 package com.example.libraryprojectjava1.controller;
 
-import com.example.libraryprojectjava1.pojo.dto.Address;
-import com.example.libraryprojectjava1.pojo.dto.LibraryType;
+import com.example.libraryprojectjava1.pojo.Address;
+import com.example.libraryprojectjava1.pojo.LibraryType;
 import com.example.libraryprojectjava1.pojo.entity.Library;
 import com.example.libraryprojectjava1.pojo.entity.Member;
 import com.example.libraryprojectjava1.service.LibraryService;
@@ -115,5 +115,17 @@ public class LibraryController {
         member.setLibrary(library);
         Member savedMember = memberService.create(member);
         return ResponseEntity.ok(savedMember);
+    }
+
+    @PutMapping("/{id}/rate")
+    public ResponseEntity<Library> rateLibrary(@PathVariable Integer id, @RequestParam int rating) {
+        Library updatedLibrary = libraryService.addRating(id, rating);
+        return ResponseEntity.ok(updatedLibrary);
+    }
+
+    @PutMapping("/{id}/borrow")
+    public ResponseEntity<Library> borrowBook(@PathVariable Integer id) {
+        Library updatedLibrary = libraryService.incrementLoanCount(id);
+        return ResponseEntity.ok(updatedLibrary);
     }
 }

@@ -1,7 +1,7 @@
 package com.example.libraryprojectjava1.service;
 
-import com.example.libraryprojectjava1.pojo.dto.Address;
-import com.example.libraryprojectjava1.pojo.dto.LibraryType;
+import com.example.libraryprojectjava1.pojo.Address;
+import com.example.libraryprojectjava1.pojo.LibraryType;
 import com.example.libraryprojectjava1.pojo.entity.Library;
 import com.example.libraryprojectjava1.pojo.entity.Member;
 import com.example.libraryprojectjava1.repository.LibraryRepository;
@@ -69,5 +69,22 @@ public class DefaultLibraryService implements LibraryService {
     @Override
     public List<Library> findByAddressAndName(Address address, String name) {
         return libraryRepository.findByAddressAndName(address, name);
+    }
+
+
+    @Override
+    public Library addRating(Integer id, int rating) {
+        Library library = libraryRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Library not found"));
+        library.addRating(rating);
+        return libraryRepository.save(library);
+    }
+
+    @Override
+    public Library incrementLoanCount(Integer id) {
+        Library library = libraryRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Library not found"));
+        library.incrementLoanCount();
+        return libraryRepository.save(library);
     }
 }

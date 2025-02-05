@@ -1,7 +1,7 @@
 package com.example.libraryprojectjava1.repository;
 
-import com.example.libraryprojectjava1.pojo.dto.Address;
-import com.example.libraryprojectjava1.pojo.dto.LibraryType;
+import com.example.libraryprojectjava1.pojo.Address;
+import com.example.libraryprojectjava1.pojo.LibraryType;
 import com.example.libraryprojectjava1.pojo.entity.Library;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
