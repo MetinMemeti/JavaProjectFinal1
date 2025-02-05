@@ -8,6 +8,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "book")
 public class Book {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -20,20 +21,25 @@ public class Book {
 
     @ManyToOne
     @JoinColumn(name = "category_id")
-    @JsonBackReference
     private Category category;
 
     @Column(name = "availability")
     private int availability;
 
+    @ManyToOne
+    @JoinColumn(name = "library_id")
+    @JsonBackReference
+    private Library library;
+
     public Book() {}
 
-    public Book(Integer id,String title, String author, Category category, int availability) {
+    public Book(Integer id, String title, String author, Category category, int availability, Library library) {
+        this.id = id;
         this.title = title;
         this.author = author;
         this.category = category;
         this.availability = availability;
-        this.id = id;
+        this.library = library;
     }
 
     public Integer getId() {
@@ -74,6 +80,14 @@ public class Book {
 
     public void setAvailability(int availability) {
         this.availability = availability;
+    }
+
+    public Library getLibrary() {
+        return library;
+    }
+
+    public void setLibrary(Library library) {
+        this.library = library;
     }
 
     @Override
