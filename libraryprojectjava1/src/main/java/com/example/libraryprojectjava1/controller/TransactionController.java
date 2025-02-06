@@ -31,15 +31,45 @@ public class TransactionController {
     }
 
     // Create a new transaction
-    @PostMapping
-    public ResponseEntity<Transaction> createTransaction(@RequestBody Transaction transaction) {
+//    @PostMapping
+//    public ResponseEntity<Transaction> createTransaction(@RequestBody Transaction transaction) {
+//        try {
+//            Transaction savedTransaction = transactionService.saveTransaction(transaction);
+//            return ResponseEntity.ok(savedTransaction);
+//        } catch (IllegalArgumentException e) {
+//            return ResponseEntity.badRequest().body(null);  // Return 400 with a message
+//        }
+//    }
+
+    // Create a new transaction with memberId and bookId in the path
+    @PostMapping("/{memberId}/member/{bookId}/book")
+    public ResponseEntity<Transaction> createTransaction(@PathVariable Integer memberId,
+                                                         @PathVariable Integer bookId,
+                                                         @RequestBody Transaction transaction) {
         try {
+            // Check if the memberId and bookId in the URL match the ones in the transaction object
+            if (!transaction.getMember().getId().equals(memberId)) {
+                return ResponseEntity.badRequest().body(null);  // Invalid memberId
+            }
+            if (!transaction.getBook().getId().equals(bookId)) {
+                return ResponseEntity.badRequest().body(null);  // Invalid bookId
+            }
+
+            // Proceed with saving the transaction if the IDs match
             Transaction savedTransaction = transactionService.saveTransaction(transaction);
             return ResponseEntity.ok(savedTransaction);
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(null);  // Return 400 with a message
         }
     }
+
+
+
+
+
+
+
+
 
     // Get a specific transaction by ID
     @GetMapping("/{id}")
