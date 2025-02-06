@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5901c523-41e5-4ee4-af6a-ef3d94d29aee" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/libraryprojectjava1/src/main/java/com/example/libraryprojectjava1/pojo/entity/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/libraryprojectjava1/src/main/java/com/example/libraryprojectjava1/pojo/entity/Book.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$/libraryprojectjava1">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2sPFPeOhCBKw8JLIbS05ZsOhI5q" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.Build libraryprojectjava1.executor": "Run",
+    "Gradle.DefaultLibraryServiceTest.executor": "Run",
+    "Gradle.LibraryControllerTest.executor": "Run",
+    "Gradle.LibraryServiceTest.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.Libraryprojectjava1Application.executor": "Run",
+    "git-widget-placeholder": "Metin-Branch-Prova6",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="Libraryprojectjava1Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="libraryprojectjava1.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.libraryprojectjava1.Libraryprojectjava1Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.22855.74" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.22855.74" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5901c523-41e5-4ee4-af6a-ef3d94d29aee" name="Changes" comment="" />
+      <created>1738349283756</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1738349283756</updated>
+      <workItem from="1738349286303" duration="6922000" />
+      <workItem from="1738436750341" duration="12247000" />
+      <workItem from="1738594219679" duration="4465000" />
+      <workItem from="1738696737166" duration="6296000" />
+      <workItem from="1738772141349" duration="1386000" />
+      <workItem from="1738773722394" duration="705000" />
+      <workItem from="1738774520691" duration="1857000" />
+      <workItem from="1738780953691" duration="1545000" />
+      <workItem from="1738794984046" duration="6964000" />
+      <workItem from="1738849869376" duration="642000" />
+      <workItem from="1738851452661" duration="1514000" />
+      <workItem from="1738863427497" duration="1933000" />
+      <workItem from="1738870784441" duration="916000" />
+      <workItem from="1738874446023" duration="416000" />
+      <workItem from="1738874904003" duration="949000" />
+      <workItem from="1738876554303" duration="459000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
