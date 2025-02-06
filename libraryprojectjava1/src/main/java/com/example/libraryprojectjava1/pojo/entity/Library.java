@@ -1,7 +1,7 @@
 package com.example.libraryprojectjava1.pojo.entity;
 
-import com.example.libraryprojectjava1.pojo.dto.Address;
-import com.example.libraryprojectjava1.pojo.dto.LibraryType;
+import com.example.libraryprojectjava1.pojo.enums.Address;
+import com.example.libraryprojectjava1.pojo.enums.LibraryType;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
@@ -23,7 +23,6 @@ public class Library {
 
     @Column(name = "type")
     private LibraryType type;
-
 
 
     @Column(name = "latitude")

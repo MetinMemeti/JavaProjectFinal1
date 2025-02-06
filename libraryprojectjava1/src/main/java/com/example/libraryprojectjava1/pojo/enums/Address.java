@@ -1,4 +1,4 @@
-package com.example.libraryprojectjava1.pojo.dto;
+package com.example.libraryprojectjava1.pojo.enums;
 
 public enum Address {
 

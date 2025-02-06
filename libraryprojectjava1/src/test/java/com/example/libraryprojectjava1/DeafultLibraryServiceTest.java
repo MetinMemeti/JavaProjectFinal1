@@ -1,6 +1,5 @@
 package com.example.libraryprojectjava1;
 
-import com.example.libraryprojectjava1.pojo.dto.Address;
 import com.example.libraryprojectjava1.pojo.entity.Library;
 import com.example.libraryprojectjava1.pojo.entity.Member;
 import com.example.libraryprojectjava1.repository.LibraryRepository;
@@ -12,7 +11,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import static com.example.libraryprojectjava1.pojo.dto.Address.OHRID;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.times;
 import java.util.Arrays;

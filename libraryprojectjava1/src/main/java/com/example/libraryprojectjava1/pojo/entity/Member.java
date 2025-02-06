@@ -1,6 +1,7 @@
 package com.example.libraryprojectjava1.pojo.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -33,6 +34,7 @@ public class Member {
     private Library library; // A member belongs to one library
 
     @OneToMany(mappedBy = "member")
+    @JsonIgnore
     private Set<Transaction> transactions;
 
     public Member() {}
