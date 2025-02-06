@@ -1,7 +1,6 @@
 package com.example.libraryprojectjava1.pojo.entity;
 
 import com.example.libraryprojectjava1.pojo.dto.Address;
-import com.example.libraryprojectjava1.pojo.dto.AvailabilityL;
 import com.example.libraryprojectjava1.pojo.dto.LibraryType;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
