@@ -1,5 +1,7 @@
 package com.example.libraryprojectjava1.pojo.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.List;
 import java.util.Set;
@@ -19,6 +21,7 @@ public class Category {
     private String description;
 
     @OneToMany(mappedBy = "category")
+    @JsonManagedReference
     private Set<Book> books;
 
     public Category() {}

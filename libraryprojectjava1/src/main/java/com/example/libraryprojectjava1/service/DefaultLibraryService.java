@@ -1,7 +1,7 @@
 package com.example.libraryprojectjava1.service;
 
-import com.example.libraryprojectjava1.pojo.dto.Address;
-import com.example.libraryprojectjava1.pojo.dto.LibraryType;
+import com.example.libraryprojectjava1.pojo.enums.Address;
+import com.example.libraryprojectjava1.pojo.enums.LibraryType;
 import com.example.libraryprojectjava1.pojo.entity.Library;
 import com.example.libraryprojectjava1.pojo.entity.Member;
 import com.example.libraryprojectjava1.repository.LibraryRepository;
