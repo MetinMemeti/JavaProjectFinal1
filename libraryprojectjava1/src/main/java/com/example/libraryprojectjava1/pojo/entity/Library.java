@@ -25,8 +25,7 @@ public class Library {
     @Column(name = "type")
     private LibraryType type;
 
-    @Column(name = "availability")
-    private AvailabilityL isOpenToPublic;
+
 
     @Column(name = "latitude")
     private double latitude;
@@ -42,12 +41,12 @@ public class Library {
     @JsonManagedReference
     private Set<Book> books;
 
-    public Library(Integer id, String name, Address address, LibraryType type, AvailabilityL isOpenToPublic, double latitude, double longitude) {
+    public Library(Integer id, String name, Address address, LibraryType type, double latitude, double longitude) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.type = type;
-        this.isOpenToPublic = isOpenToPublic;
+
         this.latitude = latitude;
         this.longitude = longitude;
     }
@@ -87,13 +86,9 @@ public class Library {
         this.type = type;
     }
 
-    public AvailabilityL isOpenToPublic() {
-        return isOpenToPublic;
-    }
 
-    public void setOpenToPublic(AvailabilityL isOpenToPublic) {
-        this.isOpenToPublic = isOpenToPublic;
-    }
+
+
 
     public double getLatitude() {
         return latitude;

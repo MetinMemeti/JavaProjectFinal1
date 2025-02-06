@@ -41,7 +41,7 @@ public class DefaultBookService implements BookService {
             book.setTitle(bookDetails.getTitle());
             book.setAuthor(bookDetails.getAuthor());
             book.setCategory(bookDetails.getCategory());
-            book.setAvailability(bookDetails.getAvailability());
+
             return bookRepository.save(book);
         }
         return null;

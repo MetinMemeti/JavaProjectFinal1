@@ -23,8 +23,7 @@ public class Book {
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @Column(name = "availability")
-    private int availability;
+
 
     @ManyToOne
     @JoinColumn(name = "library_id")
@@ -33,12 +32,12 @@ public class Book {
 
     public Book() {}
 
-    public Book(Integer id, String title, String author, Category category, int availability, Library library) {
+    public Book(Integer id, String title, String author, Category category, Library library) {
         this.id = id;
         this.title = title;
         this.author = author;
         this.category = category;
-        this.availability = availability;
+
         this.library = library;
     }
 
@@ -74,13 +73,7 @@ public class Book {
         this.category = category;
     }
 
-    public int getAvailability() {
-        return availability;
-    }
 
-    public void setAvailability(int availability) {
-        this.availability = availability;
-    }
 
     public Library getLibrary() {
         return library;
