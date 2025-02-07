@@ -29,9 +29,9 @@ public class Member {
     private LocalDate membershipDate;
 
     @ManyToOne
-    @JoinColumn(name = "library_id", nullable = true)  // Now not nullable, to allow assignment later
+    @JoinColumn(name = "library_id", nullable = true)
     @JsonBackReference
-    private Library library; // A member belongs to one library
+    private Library library;
 
     @OneToMany(mappedBy = "member")
     @JsonIgnore
