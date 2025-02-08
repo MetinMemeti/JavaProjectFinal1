@@ -37,7 +37,7 @@ public class LibraryController {
         return ResponseEntity.ok(libraries);
     }
 
-    // Get a library by ID
+    // Get a library by ID2
     @GetMapping("/{id}")
     public ResponseEntity<Library> getLibraryById(@PathVariable Integer id) {
         Optional<Library> library = libraryService.findById(id);

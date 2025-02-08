@@ -14,7 +14,7 @@ public class Transaction {
 
     @ManyToOne
     @JoinColumn(name = "book_id", nullable = false)
-    @JsonIgnore
+
     private Book book;
 
     //many transactions are made by one member, one transaction has one member only

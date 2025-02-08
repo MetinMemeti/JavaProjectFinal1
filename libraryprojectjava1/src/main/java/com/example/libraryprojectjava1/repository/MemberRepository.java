@@ -10,5 +10,5 @@ import java.util.Optional;
 @Repository
 public interface MemberRepository extends JpaRepository<Member, Integer> {
     Optional<Member> findByEmail(String email);
-    List<Member> findByLibraryId(Integer libraryId);  // Get members by library
+    List<Member> findByLibraryId(Integer libraryId);
 }
